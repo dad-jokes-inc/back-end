@@ -10,7 +10,7 @@ const jokesRouter = require('../jokes/jokes-router');
 module.exports = server => {
     server.post('/api/register', register);
     server.post('/api/login', login);
-    server.get('/api/jokes', authenticate, jokesRouter);
+    server.use('/api/jokes', authenticate, jokesRouter);
 }
 
 function register(req, res) {
