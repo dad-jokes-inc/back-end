@@ -1,0 +1,8 @@
+{
+  "name": "Dad-jokes-BE",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dad-jokes-inc/back-end.git",
+  "author": "Wei Du <wei.du.2015@marshall.usc.edu>",
+  "license": "MIT"
+}
