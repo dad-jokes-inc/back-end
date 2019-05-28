@@ -1,0 +1,27 @@
+{
+  "name": "Dad-jokes-BE",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dad-jokes-inc/back-end.git",
+  "author": "Wei Du <wei.du.2015@marshall.usc.edu>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.5",
+    "sqlite3": "^4.0.8"
+  },
+  "devDependencies": {
+    "knex-cleaner": "^1.1.4",
+    "nodemon": "^1.19.1"
+  }
+}
