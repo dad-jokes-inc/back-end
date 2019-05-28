@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
   .createTable('jokes', tbl => {
     tbl.increments();
     tbl
-    .string('jokes', 500)
+    .string('joke', 500)
     .notNullable();
     tbl
     .integer('user_id')
