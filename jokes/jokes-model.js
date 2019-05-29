@@ -6,7 +6,8 @@ module.exports = {
     findById,
     add,
     update,
-    remove
+    remove,
+    findByUser
 }
 
 function find(){
@@ -25,13 +26,20 @@ async function add(joke) {
   }
 
 function update(id, changes){
+    console.log(changes);
     return db('jokes')
         .where({id})
         .update(changes)
+        
 }
 
 function remove(id){
     return db('jokes')
         .where({id})
         .del()
+}
+
+function findByUser(user_id){
+    return db('jokes')
+    .where({ user_id })
 }
