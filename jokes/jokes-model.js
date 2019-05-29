@@ -19,10 +19,10 @@ function findById(id){
         .first()
 }
 
-function add(track){
-    return db('jokes')
-        .insert(track, 'id')
-}
+async function add(joke) {
+    const [id] = await db('jokes').insert(joke);
+    return findById(id);
+  }
 
 function update(id, changes){
     return db('jokes')

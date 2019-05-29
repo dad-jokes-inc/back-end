@@ -11,11 +11,16 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const joke = req.body;
-    if(joke.content){
+    const content = req.body
+    if(content){
         try{
-            const newJoke = await Jokes.add(newJoke);
-            res.status(201).json(newJoke)
+            console.log('joke', content)
+            Jokes.add(content)
+            .then(newJokes => {
+                res.status(201).json(newJokes)
+            })
+            .catch(err => {res.status(500).json(err)})
+            
         } catch(error){ res.status(500).json({ message: 'Something wrong when you write the joke, please try again'})}
     } else{
         res.status(400).json({ message: 'Please provide content'})
