@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
     const content = req.body
     if(content){
         try{
-            console.log('joke', content)
             Jokes.add(content)
             .then(newJokes => {
                 res.status(201).json(newJokes)
@@ -29,10 +28,11 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     const changes = req.body;
-    if(changes.content){
+    if(changes.joke){
         try{
             const updated = await Jokes.update(req.params.id, changes);
             if(updated){
+                console.log(changes);
                 res.status(200).json(updated)
             }else{
                 res.status(404).json({ message: 'Can not locate the joke you are looking for...'})
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
             res.status(500).json({ message: 'Something wrong when we try to locate the jokes'})
         }
     } else{
-        res.status(400).json({ message: 'please provide the if of the track'})
+        res.status(400).json({ message: 'please provide the id of the joke'})
     }
 })
 
