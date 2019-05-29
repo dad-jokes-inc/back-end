@@ -11,10 +11,10 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const content = req.body
+    const content = req.body 
     if(content){
         try{
-            Jokes.add(content)
+            Jokes.add(content, req.decoded.subject)
             .then(newJokes => {
                 res.status(201).json(newJokes)
             })

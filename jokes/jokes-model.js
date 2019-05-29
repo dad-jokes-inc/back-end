@@ -20,8 +20,9 @@ function findById(id){
         .first()
 }
 
-async function add(joke) {
-    const [id] = await db('jokes').insert(joke);
+async function add(joke, user_id) {
+    const [id] = await db('jokes').insert({...joke, user_id});
+    
     return findById(id);
   }
 
