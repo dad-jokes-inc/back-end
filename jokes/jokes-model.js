@@ -29,8 +29,7 @@ function update(id, changes){
     console.log(changes);
     return db('jokes')
         .where({id})
-        .update(changes)
-        
+        .update(changes)        
 }
 
 function remove(id){
