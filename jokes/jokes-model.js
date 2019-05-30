@@ -1,5 +1,6 @@
 
 const db = require('../data/dbConfig');
+const User = require('../users/users-model');
 
 module.exports = {
     find,
@@ -11,7 +12,11 @@ module.exports = {
 }
 
 function find(){
-    return db('jokes')
+     return db('jokes as j')
+     .join('users as u', 'j.user_id', 'u.id')
+     .select('j.id', 'j.user_id', 'j.joke', 'u.username')
+    //  .join('users', 'jokes.user_id', 'users.id').select('jokes.id', 'jokes.joke', 'users.username');
+    //return db('jokes')
 }
 
 function findById(id){

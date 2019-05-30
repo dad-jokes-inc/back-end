@@ -1,13 +1,20 @@
 const router = require('express').Router();
 const Jokes = require('./jokes-model');
+const db = require('../data/dbConfig');
+const Users = require('../users/users-model');
 
-router.get('/', async (req, res) => {
-    try{
-        const jokes = await Jokes.find();
+router.get('/',  (req, res) => {
+
+    Jokes.find().then(jokes => {
         res.status(200).json(jokes)
-    }catch(error){
-        res.status(500).json({ message: 'Error occurred when retrieving jokes'})
-    }
+    }).catch
+    
+    // try{
+    //     const jokes = await Jokes.find();
+    //     res.status(200).json(jokes)
+    // }catch(error){
+    //     res.status(500).json({ message: 'Error occurred when retrieving jokes'})
+    // }
 });
 
 router.post('/', async (req, res) => {
