@@ -7,12 +7,14 @@ const secret = require('../auth/secret');
 const Users = require('../users/users-model');
 const jokesRouter = require('../jokes/jokes-router');
 const publicRouter = require('../public/public-router');
+const userRouter = require('../users/user-router');
 
 module.exports = server => {
     server.post('/api/register', register);
     server.post('/api/login', login);
     server.use('/api/jokes', authenticate, jokesRouter);
     server.use('/api/public', publicRouter);
+    server.use('/api/users', userRouter);
 }
 
 function register(req, res) {

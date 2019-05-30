@@ -7,7 +7,9 @@ router.get('/',  (req, res) => {
 
     Jokes.find().then(jokes => {
         res.status(200).json(jokes)
-    }).catch
+    }).catch(err => {
+        res.status(500).json(err)
+    })
     
     // try{
     //     const jokes = await Jokes.find();
