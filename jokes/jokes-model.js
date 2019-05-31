@@ -15,8 +15,7 @@ function find(){
      return db('jokes as j')
      .join('users as u', 'j.user_id', 'u.id')
      .select('j.id', 'j.user_id', 'j.joke', 'u.username')
-    //  .join('users', 'jokes.user_id', 'users.id').select('jokes.id', 'jokes.joke', 'users.username');
-    //return db('jokes')
+    
 }
 
 function findById(id){
@@ -32,7 +31,6 @@ async function add(joke, user_id) {
   }
 
 function update(id, changes){
-    console.log(changes);
     return db('jokes')
         .where({id})
         .update(changes)        

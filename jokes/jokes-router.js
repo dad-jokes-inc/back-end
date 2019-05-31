@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const Jokes = require('./jokes-model');
-const db = require('../data/dbConfig');
-const Users = require('../users/users-model');
+
 
 router.get('/',  (req, res) => {
 
@@ -10,13 +9,6 @@ router.get('/',  (req, res) => {
     }).catch(err => {
         res.status(500).json(err)
     })
-    
-    // try{
-    //     const jokes = await Jokes.find();
-    //     res.status(200).json(jokes)
-    // }catch(error){
-    //     res.status(500).json({ message: 'Error occurred when retrieving jokes'})
-    // }
 });
 
 router.post('/', async (req, res) => {
@@ -46,7 +38,6 @@ router.get('/user/:id', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const{ id } = req.params;
-    console.log(id)
     try{
         const joke = await Jokes.findById(id);
         res.status(200).json(joke)
@@ -56,33 +47,10 @@ router.get('/:id', async (req, res) => {
 })
 
 
-// router.put('/:id', async (req, res) => {
-//     const {joke, user_id} = req.body;
-//     console.log(req.body);
-//     if(joke){
-//         console.log('joke:', joke)
-//         const {id} =req.params;
-//         const sameUser = await Users.findById(id);
-//         const updated = await Jokes.update(req.params.id, req.body);
-//         console.log('id:', id)
-//         try{
-//             if(updated.user_id != sameUser.id) {
-//             res.status(400).json({message: 'you cannot edit'})
-//             } else { 
-//                 res.status(200).json({message: 'edit complete'})
-//                 }
-//             } 
-//         catch(error){
-//             res.status(400).json({message:'no, but in edit route'})
-//         }   
-//     }else{
-//         res.status(400).json({message:'please provide id of the joke'})
-//     }
-// })
-
 
 router.put('/:id', async (req, res) => {
     const changes = req.body;
+    
     if(changes.joke){
         try{
             const updated = await Jokes.update(req.params.id, changes);
