@@ -10,7 +10,7 @@ module.exports ={
 }
 
 function find(){
-    return db('users').select('id', 'name', 'password')
+    return db('users').select('id', 'username')
 }
 
 function findBy(filter){
@@ -32,3 +32,4 @@ function remove(id){
 function update(id, changes){
     return db('users').where({id}).update(changes)
 }
+
