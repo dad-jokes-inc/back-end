@@ -87,7 +87,6 @@ router.put('/:id', async (req, res) => {
         try{
             const updated = await Jokes.update(req.params.id, changes);
             if(updated){
-                console.log(changes);
                 res.status(200).json(updated)
             }else{
                 res.status(404).json({ message: 'Can not locate the joke you are looking for...'})
